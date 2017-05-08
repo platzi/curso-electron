@@ -11,11 +11,31 @@ app.on('before-quit', () => {
 // Ejecutando ordenes cuando la aplicación esta lista
 app.on('ready', () => {
   // creando una ventana
-  let win = new BrowserWindow()
+  let win = new BrowserWindow({
+    width: 800,
+    height: 600,
+    title: 'Hola Mundo!',
+    center: true,
+    maximizable: false,
+    show: false
+  })
+
+  // Mostrando la ventana solo cuando el contenido a mostrar sea cargado
+  win.once('ready-to-show', () => {
+    win.show()
+  })
+
+  // Escuchando el evento cuando la ventana es movida
+  win.on('move', () => {
+    const position = win.getPosition()
+    console.log(`la posición es ${position}`)
+  })
 
   // detectando el cierre de la ventana para cerrar el aplicativo
   win.on('closed', () => {
     win = null
     app.quit()
   })
+
+  win.loadURL('http://devdocs.io/')
 })
