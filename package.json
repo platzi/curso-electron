@@ -1,0 +1,15 @@
+{
+  "name": "platzipics",
+  "version": "1.0.0",
+  "description": "Aplicativo de electron para visualización de imágenes",
+  "main": "index.js",
+  "scripts": {
+    "dev": "electron index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adrian Estrada <edsadr@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^1.6.6"
+  }
+}
