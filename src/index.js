@@ -37,5 +37,6 @@ app.on('ready', () => {
     app.quit()
   })
 
-  win.loadURL('http://devdocs.io/')
+  // Carga una url desde el folder renderer
+  win.loadURL(`file://${__dirname}/renderer/index.html`)
 })

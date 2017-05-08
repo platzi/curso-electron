@@ -4,7 +4,7 @@
   "description": "Aplicativo de electron para visualización de imágenes",
   "main": "index.js",
   "scripts": {
-    "dev": "electron index.js",
+    "dev": "electron src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Adrian Estrada <edsadr@gmail.com>",
