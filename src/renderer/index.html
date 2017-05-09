@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Hola Mundo!</title>
   <link rel="stylesheet" href="../assets/css/photon.min.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
   <script src="frontend.js" type="text/javascript" charset="utf-8" ></script>
 </head>
 <body>
@@ -43,7 +44,8 @@
                 <strong>4.jpg</strong>
                 <p>1 MB</p>
               </div>
-            </li><li class="list-group-item">
+            </li>
+            <li class="list-group-item">
               <img class="media-object pull-left" src="../assets/img/5.jpg" height="32">
               <div class="media-body">
                 <strong>5.jpg</strong>
@@ -53,12 +55,29 @@
           </ul>
         </div>
         <div class="pane">
-          <div class="toolbar-actions">
-              <div class="btn-group">
-                <button class="btn btn-default">
-                  <span class="icon icon-home"></span>
-                </button>
+          <div class="image-view full-height">
+            <header class="toolbar toolbar-header image-toolbar">
+              <div class="toolbar-actions">
+                  <div class="btn-group">
+                    <button class="btn btn-default">
+                      <span class="icon icon-folder icon-text"></span>
+                      Abrir ubicación
+                    </button>
+                  </div>
+                  <button class="btn btn-default pull-right">
+                    <span class="icon icon-download icon-text"></span>
+                    Guardar
+                  </button>
+                  <select id="filters" class="pull-right">
+                    <option value="none">Ninguno</option>
+                    <option value="sepia">Sepia</option>
+                  </select>
+                  <label class="pull-right filter-label">Filtros: </label>
               </div>
+            </header>
+            <div class="image-container">
+              <img id="image-displayed" src="../assets/img/1.jpg" alt="">
+            </div>
           </div>
         </div>
       </div>

@@ -1,0 +1,32 @@
+.full-height {
+  height: 100%;
+}
+
+.image-view {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+.filter-label {
+  margin-right: 10px;
+}
+
+.image-container {
+  width: 100%;
+  text-align: center;
+  padding: 40px;
+  height: 90%;
+}
+
+.image-toolbar {
+  width: 100%;
+  align-self: flex-start;
+  position: absolute;
+}
+
+#image-displayed {
+  max-height: 100%;
+  max-width: 100%;
+}
