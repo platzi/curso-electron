@@ -4,12 +4,16 @@
   "description": "Aplicativo de electron para visualización de imágenes",
   "main": "index.js",
   "scripts": {
-    "dev": "electron src/index.js",
+    "dev": "cross-env NODE_ENV=development electron src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Adrian Estrada <edsadr@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "electron": "^1.6.6"
+    "cross-env": "^4.0.0",
+    "electron-compile": "^6.4.1"
+  },
+  "devDependencies": {
+    "electron-prebuilt-compile": "^1.6.6"
   }
 }
