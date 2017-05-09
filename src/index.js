@@ -1,7 +1,7 @@
 'use strict'
 
 // instanciando los objetos app y BrowserWindow
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, ipcMain } from 'electron'
 import devtools from './devtools'
 
 if (process.env.NODE_ENV === 'development') {
@@ -44,4 +44,9 @@ app.on('ready', () => {
 
   // Carga una url desde el folder renderer
   win.loadURL(`file://${__dirname}/renderer/index.html`)
+})
+
+ipcMain.on('ping', (event, arg) => {
+  console.log(`se recibio ping - ${arg}`)
+  event.sender.send('pong', new Date())
 })
