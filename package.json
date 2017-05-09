@@ -5,15 +5,19 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development electron src/index.js",
+    "lint": "standard",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Adrian Estrada <edsadr@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "cross-env": "^4.0.0",
-    "electron-compile": "^6.4.1"
+    "electron-compile": "^6.4.1",
+    "electron-debug": "^1.1.0"
   },
   "devDependencies": {
-    "electron-prebuilt-compile": "^1.6.6"
+    "devtron": "^1.4.0",
+    "electron-prebuilt-compile": "^1.6.6",
+    "standard": "^10.0.2"
   }
 }
