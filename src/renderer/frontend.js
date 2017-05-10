@@ -1,21 +1,19 @@
 import url from 'url'
 import path from 'path'
 import applyFilter from './filters'
-import { setIpc, sendIpc } from './ipcRendererEvents'
+import { setIpc, openDirectory } from './ipcRendererEvents'
 
 window.addEventListener('load', () => {
   setIpc()
   addImagesEvents()
   searImagesEvent()
   selectEvent()
-  openDirectory()
+  buttonEvent('open-directory', openDirectory)
 })
 
-function openDirectory () {
-  const openDirectory = document.getElementById('open-directory')
-  openDirectory.addEventListener('click', () => {
-    sendIpc()
-  })
+function buttonEvent (id, func) {
+  const openDirectory = document.getElementById(id)
+  openDirectory.addEventListener('click', func)
 }
 
 function addImagesEvents () {
