@@ -1,4 +1,4 @@
-import { ipcRenderer } from 'electron'
+import { ipcRenderer, remote } from 'electron'
 import { addImagesEvents, clearImages, loadImages, selectFisrtImage } from './images-ui'
 import { saveImage } from './filters'
 import path from 'path'
@@ -20,6 +20,22 @@ function setIpc () {
   })
 }
 
+function openPreferences () {
+  const BrowserWindow = remote.BrowserWindow
+
+  const preferencesWindow = new BrowserWindow({
+    width: 400,
+    height: 300,
+    title: 'Preferencias',
+    center: true,
+    modal: true,
+    frame: true,
+    show: false
+  })
+
+  preferencesWindow.show()
+}
+
 function openDirectory () {
   ipcRenderer.send('open-directory')
 }
@@ -38,5 +54,6 @@ function saveFile () {
 module.exports = {
   setIpc: setIpc,
   saveFile: saveFile,
-  openDirectory: openDirectory
+  openDirectory: openDirectory,
+  openPreferences: openPreferences
 }
