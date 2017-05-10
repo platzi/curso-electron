@@ -3,6 +3,7 @@
 // instanciando los objetos app y BrowserWindow
 import { app, BrowserWindow, ipcMain, dialog } from 'electron'
 import devtools from './devtools'
+import handleErrors from './handle-errors'
 import isImage from 'is-image'
 import filesize from 'filesize'
 import fs from 'fs'
@@ -30,6 +31,8 @@ app.on('ready', () => {
     maximizable: false,
     show: false
   })
+
+  handleErrors(win)
 
   // Mostrando la ventana solo cuando el contenido a mostrar sea cargado
   win.once('ready-to-show', () => {
