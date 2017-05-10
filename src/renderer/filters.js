@@ -9,12 +9,10 @@ function applyFilter (filter, currentImage) {
     .renderHtml(currentImage)
 }
 
-function saveImage (fileName) {
+function saveImage (fileName, callback) {
   let fileSrc = document.getElementById('image-displayed').src
   fileSrc = fileSrc.replace(/^data:([A-Za-z-+/]+);base64,/, '')
-  fs.writeFile(fileName, fileSrc, 'base64', (err) => {
-    if (err) console.log(err)
-  })
+  fs.writeFile(fileName, fileSrc, 'base64', callback)
 }
 
 module.exports = {
