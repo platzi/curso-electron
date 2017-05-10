@@ -20,7 +20,9 @@ function changeImage (node) {
     }
 
     node.classList.add('selected')
-    document.getElementById('image-displayed').src = node.querySelector('img').src
+    const image = document.getElementById('image-displayed')
+    image.src = node.querySelector('img').src
+    image.dataset.original = image.src
   } else {
     document.getElementById('image-displayed').src = ''
   }
