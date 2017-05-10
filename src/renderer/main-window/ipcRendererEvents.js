@@ -2,6 +2,7 @@ import { ipcRenderer, remote } from 'electron'
 import { addImagesEvents, clearImages, loadImages, selectFisrtImage } from './images-ui'
 import { saveImage } from './filters'
 import path from 'path'
+import os from 'os'
 
 function setIpc () {
   ipcRenderer.on('load-images', (event, images) => {
@@ -34,7 +35,10 @@ function openPreferences () {
     show: false
   })
 
-  preferencesWindow.setParentWindow(mainWindow)
+  if (os.platform() !== 'win32') {
+    preferencesWindow.setParentWindow(mainWindow)
+  }
+
   preferencesWindow.once('ready-to-show', () => {
     preferencesWindow.show()
     preferencesWindow.focus()
