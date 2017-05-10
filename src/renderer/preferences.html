@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Platzipics</title>
+  <link rel="stylesheet" href="../assets/css/photon.min.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <script src="prefs-window/preferences-frontend.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div class="window">
+  <header class="toolbar toolbar-header">
+    <h1 class="title">Preferencias</h1>
+  </header>
+  <div class="window-content">
+      <div class="padded-more">
+        <form id="preferences-form">
+          <div class="form-group">
+            <label>Usuario de CloudUp</label>
+            <input type="email" class="form-control" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label>Password de CloudUp</label>
+            <input type="password" class="form-control" placeholder="Password">
+          </div>
+        </form>
+      </div>
+  </div>
+  <footer class="toolbar toolbar-footer">
+    <div class="toolbar-actions">
+      <button id="cancel-button" class="btn btn-default">
+        Cancelar
+      </button>
+
+      <button id="save-button" type="submit" form="preferences-form" class="btn btn-primary pull-right">
+        Guardar
+      </button>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

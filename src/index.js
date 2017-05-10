@@ -6,7 +6,7 @@ import devtools from './devtools'
 import setIpcMain from './ipcMainEvents'
 import handleErrors from './handle-errors'
 
-let win
+global.win // eslint-disable-line
 
 if (process.env.NODE_ENV === 'development') {
   devtools()
@@ -20,7 +20,7 @@ app.on('before-quit', () => {
 // Ejecutando ordenes cuando la aplicación esta lista
 app.on('ready', () => {
   // creando una ventana
-  win = new BrowserWindow({
+  global.win = new BrowserWindow({
     width: 800,
     height: 600,
     title: 'Hola Mundo!',
@@ -29,26 +29,26 @@ app.on('ready', () => {
     show: false
   })
 
-  setIpcMain(win)
-  handleErrors(win)
+  setIpcMain(global.win)
+  handleErrors(global.win)
 
   // Mostrando la ventana solo cuando el contenido a mostrar sea cargado
-  win.once('ready-to-show', () => {
-    win.show()
+  global.win.once('ready-to-show', () => {
+    global.win.show()
   })
 
   // Escuchando el evento cuando la ventana es movida
-  win.on('move', () => {
-    const position = win.getPosition()
+  global.win.on('move', () => {
+    const position = global.win.getPosition()
     console.log(`la posición es ${position}`)
   })
 
   // detectando el cierre de la ventana para cerrar el aplicativo
-  win.on('closed', () => {
-    win = null
+  global.win.on('closed', () => {
+    global.win = null
     app.quit()
   })
 
   // Carga una url desde el folder renderer
-  win.loadURL(`file://${__dirname}/renderer/index.html`)
+  global.win.loadURL(`file://${__dirname}/renderer/index.html`)
 })
