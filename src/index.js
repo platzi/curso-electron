@@ -1,7 +1,7 @@
 'use strict'
 
 // instanciando los objetos app y BrowserWindow
-import { app, BrowserWindow, Tray } from 'electron'
+import { app, BrowserWindow, Tray, globalShortcut } from 'electron'
 import devtools from './devtools'
 import setIpcMain from './ipcMainEvents'
 import handleErrors from './handle-errors'
@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === 'development') {
 
 // imprimiendo un mensaje en la consola antes de salir
 app.on('before-quit', () => {
-  console.log('Saliendo..')
+  globalShortcut.unregisterAll()
 })
 
 // Ejecutando ordenes cuando la aplicación esta lista
@@ -26,10 +26,15 @@ app.on('ready', () => {
   global.win = new BrowserWindow({
     width: 800,
     height: 600,
-    title: 'Hola Mundo!',
+    title: 'Platzipics',
     center: true,
     maximizable: false,
     show: false
+  })
+
+  globalShortcut.register('CommandOrControl+Alt+p', () => {
+    global.win.show()
+    global.win.focus()
   })
 
   setIpcMain(global.win)
