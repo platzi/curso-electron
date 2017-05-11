@@ -1,7 +1,9 @@
 import { setIpc, openDirectory, saveFile, openPreferences, uploadImage, pasteImage } from './main-window/ipcRendererEvents'
 import { addImagesEvents, searchImagesEvent, selectEvent, print } from './main-window/images-ui'
+import createMenu from './main-window/menu'
 
 window.addEventListener('load', () => {
+  createMenu()
   setIpc()
   addImagesEvents()
   searchImagesEvent()
