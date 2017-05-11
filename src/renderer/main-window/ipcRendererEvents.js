@@ -2,6 +2,8 @@ import { ipcRenderer, remote } from 'electron'
 import settings from 'electron-settings'
 import { addImagesEvents, clearImages, loadImages, selectFisrtImage } from './images-ui'
 import { saveImage } from './filters'
+import Cloudup from 'cloudup-client'
+import crypto from 'crypto'
 import path from 'path'
 import os from 'os'
 
@@ -23,6 +25,7 @@ function setIpc () {
     saveImage(file, (err) => {
       if (err) return showDialog('error', 'Platzipics', err.message)
 
+      document.getElementById('image-displayed').dataset.filtered = file
       showDialog('info', 'Platzipics', 'La imagen fue guardada')
     })
   })
@@ -69,9 +72,45 @@ function saveFile () {
   ipcRenderer.send('open-save-dialog', ext)
 }
 
+function uploadImage () {
+  let imageNode = document.getElementById('image-displayed')
+  let image
+  if (imageNode.dataset.filtered) {
+    image = imageNode.dataset.filtered
+  } else {
+    image = imageNode.src
+  }
+
+  image = image.replace('file://', '')
+  let fileName = path.basename(image)
+
+  if (settings.has('cloudup.user') && settings.has('cloudup.passwd')) {
+    const decipher = crypto.createDecipher('aes192', 'Platzipics')
+    let decrypted = decipher.update(settings.get('cloudup.passwd'), 'hex', 'utf8')
+    decrypted += decipher.final('utf8')
+
+    const client = Cloudup({
+      user: settings.get('cloudup.user'),
+      pass: decrypted
+    })
+
+    const stream = client.stream({ title: `Platzipics - ${fileName}` })
+    stream.file(image).save((err) => {
+      if (err) {
+        showDialog('error', 'Platzipics', 'Verifique su conexión y/o sus credenciales de Cloudup')
+      } else {
+        showDialog('info', 'Platzipics', `Imagen cargada con éxito - ${stream.url}`)
+      }
+    })
+  } else {
+    showDialog('error', 'Platzipics', 'Por favor complete las preferencias de Cloudup')
+  }
+}
+
 module.exports = {
   setIpc: setIpc,
   saveFile: saveFile,
   openDirectory: openDirectory,
-  openPreferences: openPreferences
+  openPreferences: openPreferences,
+  uploadImage: uploadImage
 }
