@@ -54,7 +54,7 @@ function loadImages (event, dir) {
         let imageFile = path.join(dir, files[i])
         let stats = fs.statSync(imageFile)
         let size = filesize(stats.size, {round: 0})
-        images.push({filename: files[i], src: `file://${imageFile}`, size: size})
+        images.push({filename: files[i], src: `plp://${imageFile}`, size: size})
       }
     }
 
