@@ -8,7 +8,9 @@
     "lint": "standard",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron-forge start",
-    "package": "electron-forge package",
+    "package-mac": "electron-forge package --platform=darwin --arch=x64",
+    "package-win": "electron-forge package --platform=win32 --arch=ia32",
+    "package-linux": "electron-forge package --platform=linux --arch=x64",
     "make": "electron-forge make"
   },
   "author": "Adrian Estrada <edsadr@gmail.com>",
@@ -28,7 +30,7 @@
     "babel-preset-env": "^1.4.0",
     "babel-preset-react": "^6.24.1",
     "devtron": "^1.4.0",
-    "electron-prebuilt-compile": "1.7.0",
+    "electron-prebuilt-compile": "1.6.6",
     "standard": "^10.0.2"
   },
   "config": {
@@ -45,7 +47,9 @@
           "rpm"
         ]
       },
-      "electronPackagerConfig": {},
+      "electronPackagerConfig": {
+        "asar": true
+      },
       "electronWinstallerConfig": {
         "name": ""
       },
