@@ -13,6 +13,10 @@
     "package-linux": "electron-forge package --platform=linux --arch=x64",
     "make": "electron-forge make"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:platzi/curso-electron.git"
+  },
   "author": "Adrian Estrada <edsadr@gmail.com>",
   "license": "MIT",
   "dependencies": {
