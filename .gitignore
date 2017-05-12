@@ -3,3 +3,5 @@ Thumbs.db
 node_modules
 npm-debug.log
 debug.log
+
+out/
