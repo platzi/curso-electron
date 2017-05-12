@@ -40,16 +40,18 @@
           "squirrel"
         ],
         "darwin": [
-          "zip"
+          "dmg"
         ],
         "linux": [
-          "deb",
-          "rpm"
+          "deb"
         ]
       },
       "electronPackagerConfig": {
         "asar": true,
         "icon": "src/assets/icons/main-icon"
+      },
+      "electronInstallerDMG": {
+        "icon": "src/assets/icons/main-icon.icns"
       },
       "electronWinstallerConfig": {
         "name": ""
