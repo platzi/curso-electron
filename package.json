@@ -48,7 +48,8 @@
         ]
       },
       "electronPackagerConfig": {
-        "asar": true
+        "asar": true,
+        "icon": "src/assets/icons/main-icon"
       },
       "electronWinstallerConfig": {
         "name": ""

@@ -36,7 +36,8 @@ app.on('ready', () => {
     title: 'Platzipics',
     center: true,
     maximizable: false,
-    show: false
+    show: false,
+    icon: path.join(__dirname, 'assets', 'icons', 'main-icon.png')
   })
 
   globalShortcut.register('CommandOrControl+Alt+p', () => {
